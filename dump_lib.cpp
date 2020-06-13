@@ -3,6 +3,7 @@
 #include <stdexcept> 
 #include <sstream>
 #include <assert.h>
+#include <regex>
 
 #include "dump_lib.hpp"
 
@@ -43,7 +44,7 @@ int dump_lib::RandomUnique::generate_int()
     return result;
 }
 
-std::vector<std::string> dump_lib::str_split(std::string str, int index)
+std::vector<std::string> dump_lib::str_split_one(std::string str, char delimiter)
 {
 	std::vector<std::string> words;
     std::stringstream ss(str);
@@ -52,4 +53,12 @@ std::vector<std::string> dump_lib::str_split(std::string str, int index)
         words.push_back(token);
     }
 	return words;
+}
+
+std::vector<std::string> dump_lib::str_split_two(std::string str)
+{
+	std::regex regex{R"([ ]+)"};
+	std::sregex_token_iterator it{str.begin(), str.end(), regex, -1};
+	std::vector<std::string> result{it, {}};
+	return result;
 }
