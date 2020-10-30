@@ -11,9 +11,8 @@ namespace dump_lib
 
     class RandomUnique;
 
-	std::vector<std::string> str_split_one(std::string str, char delimiter);
-	std::vector<std::string> str_split_two(std::string str);
-}
+	std::vector<std::string> str_split(std::string str, char delimiter);
+};
 
 class dump_lib::RandomUnique 
 {
